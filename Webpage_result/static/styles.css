@@ -1,0 +1,113 @@
+/* GLOBAL SETTINGS */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #ffffff);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* HEADER TITLE */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 40px;
+  color: #1a1a1a;
+}
+
+/* MAIN CONTAINER CARD */
+.card {
+  background: #ffffff;
+  padding: 30px;
+  max-width: 950px;
+  margin: 30px auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* FORM INPUTS */
+input[type=file], button {
+  padding: 12px;
+  margin: 15px 0;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* BUTTONS */
+button, .btn {
+  background: #007bff;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: #0056b3;
+}
+
+/* ANALYSIS RESULT BLOCKS */
+.question-block {
+  background: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border: 1px solid #cce0ff;
+}
+
+/* IMAGE STYLING */
+img {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* PAGE SECTION */
+.page {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* SPINNER STYLES */
+.spinner {
+  margin: 20px auto;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007bff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .card {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    padding: 0 20px;
+  }
+
+  input[type=file], button {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}

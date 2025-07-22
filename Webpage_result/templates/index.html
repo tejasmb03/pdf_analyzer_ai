@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Content Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script>
+    // Show spinner on form submit
+    function showLoading() {
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("upload-form").style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <h1 class="title">Welcome to PDF Content Analysis &<br>Question Generation by AI</h1>
+
+  <div class="card">
+    <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data" onsubmit="showLoading()">
+      <input type="file" name="pdf" accept="application/pdf" required>
+      <br>
+      <button type="submit">Upload & Analyze</button>
+    </form>
+
+    <div id="loader" style="display: none;">
+      <div class="spinner"></div>
+      <p style="margin-top: 15px;">Analyzing PDF... This may take few minutes ⏳</p>
+      <br> Please be Patient </br>
+    </div>
+
+    {% if result %}
+      <h2>📄 Analysis Complete</h2>
+      <a href="/download" class="btn">Download JSON</a>
+
+      {% for page in result %}
+        <div class="page">
+          <h3>Page {{ page.page }}</h3>
+          <p><strong>Text:</strong> {{ page.text }}</p>
+
+          {% for q in page.ai_generated_questions %}
+            <div class="question-block">
+              <img src="{{ url_for('static', filename=q.image.split('static/')[-1]) }}" alt="image" width="300">
+              <p><strong>Q:</strong> {{ q.question }}</p>
+              <ul>
+                {% for opt in q.options %}
+                  <li>{{ opt }}</li>
+                {% endfor %}
+              </ul>
+              <p><strong>Answer:</strong> {{ q.answer }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</body>
+</html>
